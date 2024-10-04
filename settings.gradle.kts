@@ -23,3 +23,4 @@ rootProject.name = "assignment"
 include(":app")
 include(":data")
 include(":domain")
+include(":core:data")
