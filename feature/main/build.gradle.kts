@@ -47,6 +47,7 @@ android {
 
 dependencies {
     implementation(project(":core:ui"))
+    implementation(project(":feature:news"))
     implementationKotlin()
     implementationAndroidXCore()
     implementationCompose()

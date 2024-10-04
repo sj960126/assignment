@@ -12,7 +12,7 @@ internal interface ITopHeadlinesApi {
     suspend fun fetchTopHeadlinesForCountry(
         @Query("country") country : String,
         @Query("apiKey") apiKey : String = BuildConfig.API_KEY,
-    ) : Response<List<TopHeadlinesResponse>>
+    ) : TopHeadlinesResponse
 
     companion object {
         private const val PATH = "top-headlines"

@@ -1,13 +1,13 @@
 package com.shs.data.top_headlines.model
 
-import kotlinx.serialization.Serializable
+import java.io.Serializable
 
-@Serializable
+
 internal data class TopHeadlinesResponse(
     val status: String,
     val totalResults: Int,
-    val articles: List<Article>?
-){
+    val articles : List<Article>?
+) : Serializable{
     data class Article(
         val source: Source?,
         val author: String?,
@@ -17,11 +17,11 @@ internal data class TopHeadlinesResponse(
         val urlToImage: String?,
         val publishedAt: String?,
         val content: String?
-    ){
+    ) : Serializable{
         data class Source(
             val id: String?,
             val name: String?
-        )
+        ) : Serializable
     }
 
 }

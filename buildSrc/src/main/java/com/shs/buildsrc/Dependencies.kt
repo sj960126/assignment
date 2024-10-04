@@ -6,7 +6,6 @@ object Dependencies {
         const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
         const val KOTLIN_BOM = "org.jetbrains.kotlin:kotlin-bom:${Versions.KOTLIN_VERSION}"
         const val IMMUTABLE = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${Versions.IMMUTABLE_VERSION}"
-        const val SERIALIZATION ="org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.SERIALIZATION}"
     }
 
     object AndroidX {

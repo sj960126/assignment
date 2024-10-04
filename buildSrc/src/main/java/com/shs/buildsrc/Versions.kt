@@ -20,5 +20,4 @@ object Versions {
     const val CONVERTER_GSON_VERSION = "2.9.0"
     const val COROUTINES_VERSION = "1.7.3"
     const val IMMUTABLE_VERSION = "0.3.7"
-    const val SERIALIZATION = "1.6.0"
 }

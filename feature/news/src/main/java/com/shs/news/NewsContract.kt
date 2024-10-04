@@ -9,20 +9,20 @@ import com.shs.ui.base.mvi.UiState
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
-class NewsContract {
+internal class NewsContract {
 
-    sealed interface NewsEvent : UiEvent{
+    internal sealed interface NewsEvent : UiEvent{
 
     }
 
     @Stable
-    data class NewsUiState(
+    internal data class NewsUiState(
         val newsUiState : NewsContentUiState
     ): UiState
 
 
     @Stable
-    sealed interface NewsContentUiState {
+    internal sealed interface NewsContentUiState {
 
         @Immutable
         object Loading : NewsContentUiState
@@ -36,7 +36,7 @@ class NewsContract {
         ) : NewsContentUiState
     }
 
-    sealed interface NewsSideEffect : UiSideEffect{
+    internal sealed interface NewsSideEffect : UiSideEffect{
 
     }
 
