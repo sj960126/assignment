@@ -1,10 +1,10 @@
-package com.photo.buildsrc
+package com.shs.buildsrc
 
 object Dependencies {
 
     object Kotlin {
         const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
-        const val JDK17 = "org.jetbrains.kotlin:kotlin-stdlib-jdk17:${Versions.KOTLIN_VERSION}"
+//        const val JDK17 = "org.jetbrains.kotlin:kotlin-stdlib-jdk17:${Versions.KOTLIN_VERSION}"
         const val KOTLIN_BOM = "org.jetbrains.kotlin:kotlin-bom:${Versions.KOTLIN_VERSION}"
         const val IMMUTABLE = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${Versions.IMMUTABLE_VERSION}"
     }

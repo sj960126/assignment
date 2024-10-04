@@ -1,4 +1,4 @@
-package com.photo.buildsrc
+package com.shs.buildsrc
 
 object Versions {
     const val CORE_KTX = "1.13.0"

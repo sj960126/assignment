@@ -1,4 +1,4 @@
-package com.photo.buildsrc
+package com.shs.buildsrc
 
 object AndroidConfig {
 
