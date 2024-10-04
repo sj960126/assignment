@@ -1,30 +1,24 @@
 import com.shs.buildsrc.AndroidConfig
 import com.shs.buildsrc.implementationAndroidXCore
+import com.shs.buildsrc.implementationCompose
 import com.shs.buildsrc.implementationHilt
 import com.shs.buildsrc.implementationKotlin
+
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
 android {
-
-    namespace = AndroidConfig.APP_ID
+    namespace = "com.shs.feature.main"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = AndroidConfig.APP_ID
         minSdk = AndroidConfig.MIN_SDK
-        targetSdk = AndroidConfig.TARGET_SDK
-        versionCode = AndroidConfig.AppVersion.CODE
-        versionName = AndroidConfig.AppVersion.NAME
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -43,19 +37,18 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        buildConfig = true
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.0"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+    buildFeatures {
+        compose = true
     }
 }
 
 dependencies {
-    implementation(project(":feature:main"))
+    implementation(project(":core:ui"))
     implementationKotlin()
     implementationAndroidXCore()
+    implementationCompose()
     implementationHilt()
 }

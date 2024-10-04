@@ -1,4 +1,4 @@
-package com.shs.assignment
+package com.shs.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
