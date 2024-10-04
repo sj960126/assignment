@@ -8,7 +8,6 @@ fun DependencyHandler.implementationAndroidXCore() {
 }
 
 fun DependencyHandler.implementationKotlin() {
-//    add("implementation", Dependencies.Kotlin.JDK17)
     add("implementation", Dependencies.Kotlin.KOTLIN_BOM)
     add("implementation", Dependencies.Kotlin.IMMUTABLE)
     add("implementation", Dependencies.Kotlin.COROUTINES)
