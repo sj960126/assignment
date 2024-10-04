@@ -46,6 +46,7 @@ android {
 
 dependencies {
     implementation(project(":core:data"))
+    implementation(project(":domain"))
     implementationKotlin()
     implementationAndroidXCore()
     implementationHilt()
