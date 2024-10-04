@@ -2,6 +2,7 @@ import com.shs.buildsrc.AndroidConfig
 import com.shs.buildsrc.implementationAndroidXCore
 import com.shs.buildsrc.implementationHilt
 import com.shs.buildsrc.implementationKotlin
+import com.shs.buildsrc.implementationRetrofitOkHttp
 
 plugins {
     id ("com.android.library")
@@ -17,6 +18,8 @@ android {
     defaultConfig {
         minSdk = AndroidConfig.MIN_SDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+        buildConfigField("String", "API_KEY", "\"e83a66a418984161bef701b16179f8c5\"")
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -36,10 +39,15 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
+    implementation(project(":core:data"))
     implementationKotlin()
     implementationAndroidXCore()
     implementationHilt()
+    implementationRetrofitOkHttp()
 }

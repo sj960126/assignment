@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.shs.core-data"
+    namespace = "com.shs.core.data"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
