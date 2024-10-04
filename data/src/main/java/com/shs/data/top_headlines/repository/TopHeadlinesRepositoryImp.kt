@@ -10,7 +10,7 @@ internal class TopHeadlinesRepositoryImp @Inject constructor(
     private val remoteDataSource: TopHeadlinesRemoteDataSource
 ) : ITopHeadlinesRepository{
 
-    override fun fetchTopHeadlinesForCountry(country: String): Flow<TopNewsModel> {
+    override fun fetchTopHeadlinesForCountry(country: String): Flow<List<TopNewsModel>> {
         TODO("Not yet implemented")
     }
 

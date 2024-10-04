@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ITopHeadlinesRepository {
 
-    fun fetchTopHeadlinesForCountry(country : String) : Flow<TopNewsModel>
+    fun fetchTopHeadlinesForCountry(country : String) : Flow<List<TopNewsModel>>
 
 }
