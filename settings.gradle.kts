@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "assignment"
 include(":app")
- 
+include(":domain")
