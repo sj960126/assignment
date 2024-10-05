@@ -1,11 +1,12 @@
 package com.shs.news
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.shs.domain.top_headlines.usecase.FetchTopHeadlinesUseCase
 import com.shs.ui.base.mvi.BaseMviViewModel
+import com.shs.ui.common.CountryType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,10 +21,22 @@ internal class NewsViewModel @Inject constructor(
     }
 
     init {
+        fetchNews()
+    }
+
+    private fun fetchNews(){
         viewModelScope.launch {
-            fetchTopHeadlinesUseCase("us").collectLatest {
-                Log.d("디버그","${it}")
-            }
+            fetchTopHeadlinesUseCase(country = CountryType.US.code)
+                .catch {
+                    setState {
+                        copy(newsUiState =NewsContract.NewsContentUiState.Error)
+                    }
+                }
+                .collect { news ->
+                    setState {
+                        copy(newsUiState = if(news.isEmpty()) NewsContract.NewsContentUiState.Empty else NewsContract.NewsContentUiState.Success(news = news.toPersistentList()))
+                    }
+                }
         }
     }
 

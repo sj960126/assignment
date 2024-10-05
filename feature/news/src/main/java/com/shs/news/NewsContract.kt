@@ -31,6 +31,9 @@ internal class NewsContract {
         object Empty : NewsContentUiState
 
         @Immutable
+        object Error : NewsContentUiState
+
+        @Immutable
         data class Success(
             val news : ImmutableList<TopNewsModel> = persistentListOf(),
         ) : NewsContentUiState
