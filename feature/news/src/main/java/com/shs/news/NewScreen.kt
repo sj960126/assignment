@@ -1,5 +1,6 @@
 package com.shs.news
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -20,11 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberImagePainter
 import com.shs.domain.top_headlines.model.TopNewsModel
+import com.shs.ui.common.isDeviceSizeOver600dp
 import com.shs.ui.design_system.LocalColorPalette
 import com.shs.ui.design_system.LocalTypographySystem
 
