@@ -6,6 +6,6 @@ import androidx.room.RoomDatabase
 @Database(entities = [TopHeadlinesEntity::class], version = 1, exportSchema = false)
 internal abstract class TopHeadlinesLocalDatabase : RoomDatabase() {
 
-    abstract fun topHeadLinesDao(): TopHeadlinesDao
+    abstract fun topHeadLinesDao(): ITopHeadlinesDao
 
 }

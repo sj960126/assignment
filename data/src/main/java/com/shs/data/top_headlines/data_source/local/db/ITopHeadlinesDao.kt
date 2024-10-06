@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-internal interface TopHeadlinesDao {
+internal interface ITopHeadlinesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveTopHeadlines(programs: List<TopHeadlinesEntity>)
