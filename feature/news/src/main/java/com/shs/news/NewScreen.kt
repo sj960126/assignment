@@ -36,13 +36,17 @@ import com.shs.ui.common.enableDiskAndMemoryCache
 import com.shs.ui.common.isDeviceWidthOver
 import com.shs.ui.design_system.LocalColorPalette
 import com.shs.ui.design_system.LocalTypographySystem
+import kotlinx.collections.immutable.ImmutableList
+
+
+private const val MIN_LARGE_SCREEN_WIDTH = 600
 
 @Composable
 fun NewsRoute(
     newsViewModel: NewsViewModel = hiltViewModel()
 ) {
     val viewUiState = newsViewModel.uiState.collectAsStateWithLifecycle()
-    val isLargeScreen = LocalConfiguration.current.isDeviceWidthOver(100)
+    val isLargeScreen = LocalConfiguration.current.isDeviceWidthOver(MIN_LARGE_SCREEN_WIDTH)
 
     NewsScreen(
         viewUiState = viewUiState.value,
@@ -70,9 +74,12 @@ internal fun NewsScreen(
 }
 
 @Composable
-fun NewsGrid(newsList: List<TopNewsModel>) {
+fun NewsGrid(
+    newsList: ImmutableList<TopNewsModel>,
+    cellCount : Int = 3
+) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
+        columns = GridCells.Fixed(cellCount),
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
@@ -84,7 +91,7 @@ fun NewsGrid(newsList: List<TopNewsModel>) {
 }
 
 @Composable
-fun NewsList(newsList: List<TopNewsModel>) {
+fun NewsList(newsList: ImmutableList<TopNewsModel>) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
