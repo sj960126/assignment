@@ -9,9 +9,12 @@ import androidx.room.Query
 internal interface ITopHeadlinesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveTopHeadlines(programs: List<TopHeadlinesEntity>)
+    suspend fun saveTopHeadlines(topHeadLines: List<TopHeadlinesEntity>)
 
-    @Query("DELETE FROM topHeadlines")
-    suspend fun clearTopHeadlines()
+    @Query("DELETE FROM topHeadlines WHERE country = :country")
+    suspend fun clearTopHeadlinesByCountry(country: String)
+
+    @Query("SELECT * FROM topHeadlines WHERE country = :country ORDER BY pk ASC")
+    suspend fun fetchTopHeadlinesByCountry(country: String): List<TopHeadlinesEntity>
 
 }

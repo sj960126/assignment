@@ -1,7 +1,7 @@
 package com.shs.domain.top_headlines.model
 
 data class TopNewsModel(
-    val pk : Int,
+    val pk : String,
     val country : String,
     val title : String,
     val detailUrl : String,
