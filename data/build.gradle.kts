@@ -3,6 +3,7 @@ import com.shs.buildsrc.implementationAndroidXCore
 import com.shs.buildsrc.implementationHilt
 import com.shs.buildsrc.implementationKotlin
 import com.shs.buildsrc.implementationRetrofitOkHttp
+import com.shs.buildsrc.implementationRoom
 
 plugins {
     id ("com.android.library")
@@ -51,4 +52,5 @@ dependencies {
     implementationAndroidXCore()
     implementationHilt()
     implementationRetrofitOkHttp()
+    implementationRoom()
 }
