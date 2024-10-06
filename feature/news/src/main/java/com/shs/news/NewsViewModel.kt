@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-internal class NewsViewModel @Inject constructor(
+class NewsViewModel @Inject constructor(
     val fetchTopHeadlinesUseCase: FetchTopHeadlinesUseCase
 ): BaseMviViewModel<NewsContract.NewsEvent,NewsContract.NewsUiState,NewsContract.NewsSideEffect>(){
 
