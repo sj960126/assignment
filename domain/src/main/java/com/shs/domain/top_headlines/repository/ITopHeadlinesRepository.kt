@@ -7,4 +7,5 @@ interface ITopHeadlinesRepository {
 
     fun fetchTopHeadlinesForCountry(country : String) : Flow<List<TopNewsModel>>
 
+    fun fetchTopHeadlinesByPk(pk : String) : Flow<TopNewsModel?>
 }

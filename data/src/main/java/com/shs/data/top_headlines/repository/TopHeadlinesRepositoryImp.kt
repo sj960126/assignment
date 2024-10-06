@@ -33,4 +33,8 @@ internal class TopHeadlinesRepositoryImp @Inject constructor(
         }
     }
 
+    override fun fetchTopHeadlinesByPk(pk: String): Flow<TopNewsModel?> = flow {
+        emit(localDataSource.fetchTopHeadlinesByPk(pk)?.toDomain())
+    }
+
 }

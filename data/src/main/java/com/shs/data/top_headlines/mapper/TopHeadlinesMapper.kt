@@ -41,3 +41,12 @@ internal fun List<TopHeadlinesEntity>.toDomain(): List<TopNewsModel> =
         )
     } ?: emptyList()
 
+internal fun TopHeadlinesEntity.toDomain(): TopNewsModel =
+    TopNewsModel(
+        pk = this.pk,
+        country = this.country,
+        title = this.title,
+        detailUrl = this.detailUrl,
+        urlToImage = this.urlToImage,
+        publishedAt = this.publishedAt,
+    )

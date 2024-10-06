@@ -14,5 +14,6 @@ internal class TopHeadLinesLocalDataSource @Inject constructor(
 
     suspend fun fetchTopHeadlinesByCountry(country: String): List<TopHeadlinesEntity> = topHeadlinesDao.fetchTopHeadlinesByCountry(country)
 
+    suspend fun fetchTopHeadlinesByPk(pk: String): TopHeadlinesEntity? = topHeadlinesDao.fetchTopHeadlinesByPk(pk)
 
 }

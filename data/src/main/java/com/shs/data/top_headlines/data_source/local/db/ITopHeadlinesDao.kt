@@ -17,4 +17,6 @@ internal interface ITopHeadlinesDao {
     @Query("SELECT * FROM topHeadlines WHERE country = :country ORDER BY pk ASC")
     suspend fun fetchTopHeadlinesByCountry(country: String): List<TopHeadlinesEntity>
 
+    @Query("SELECT * FROM topHeadlines WHERE pk = :pk")
+    suspend fun fetchTopHeadlinesByPk(pk: String): TopHeadlinesEntity?
 }
