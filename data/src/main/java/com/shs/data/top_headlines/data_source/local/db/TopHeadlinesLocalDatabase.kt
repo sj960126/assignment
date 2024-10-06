@@ -1,4 +1,4 @@
-package com.shs.data.top_headlines.db
+package com.shs.data.top_headlines.data_source.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
