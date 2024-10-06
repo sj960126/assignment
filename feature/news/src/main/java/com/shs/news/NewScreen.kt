@@ -2,6 +2,7 @@ package com.shs.news
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -48,9 +50,18 @@ fun NewsRoute(
     val viewUiState = newsViewModel.uiState.collectAsStateWithLifecycle()
     val isLargeScreen = LocalConfiguration.current.isDeviceWidthOver(MIN_LARGE_SCREEN_WIDTH)
 
+    LaunchedEffect(newsViewModel.effect){
+        newsViewModel.effect.collect { effect ->
+
+        }
+    }
+
     NewsScreen(
         viewUiState = viewUiState.value,
-        isLargeScreen = isLargeScreen
+        isLargeScreen = isLargeScreen,
+        onNewsItemClick = {
+            newsViewModel.setEvent(event = NewsContract.NewsEvent.ItemClick(pk = it))
+        }
     )
 }
 
@@ -58,16 +69,17 @@ fun NewsRoute(
 internal fun NewsScreen(
     viewUiState: NewsContract.NewsUiState,
     isLargeScreen: Boolean,
-) {
+    onNewsItemClick : (String) -> Unit,
+    ) {
     when (viewUiState.newsUiState) {
         NewsContract.NewsContentUiState.Loading -> Unit
         NewsContract.NewsContentUiState.Empty -> Unit
         NewsContract.NewsContentUiState.Error -> Unit
         is NewsContract.NewsContentUiState.Success -> {
             if (isLargeScreen) {
-                NewsGrid(viewUiState.newsUiState.news)
+                NewsGrid(newsList = viewUiState.newsUiState.news, onNewsItemClick = onNewsItemClick)
             } else {
-                NewsList(viewUiState.newsUiState.news)
+                NewsList(newsList = viewUiState.newsUiState.news, onNewsItemClick = onNewsItemClick)
             }
         }
     }
@@ -76,7 +88,8 @@ internal fun NewsScreen(
 @Composable
 fun NewsGrid(
     newsList: ImmutableList<TopNewsModel>,
-    cellCount : Int = 3
+    onNewsItemClick : (String) -> Unit,
+    cellCount : Int = 3,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(cellCount),
@@ -85,35 +98,40 @@ fun NewsGrid(
             .fillMaxHeight()
     ) {
         items(newsList, key = { it.pk }) {
-            NewsCard(newsModel = it)
+            NewsCard(newsModel = it, onNewsItemClick = onNewsItemClick)
         }
     }
 }
 
 @Composable
-fun NewsList(newsList: ImmutableList<TopNewsModel>) {
+fun NewsList(
+    newsList: ImmutableList<TopNewsModel>,
+    onNewsItemClick : (String) -> Unit,
+    ) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
         items(newsList, key = { it.pk }) {
-            NewsCard(newsModel = it)
+            NewsCard(newsModel = it, onNewsItemClick = onNewsItemClick)
         }
     }
 }
 
 @Composable
 fun NewsCard(
-    newsModel: TopNewsModel,
     modifier: Modifier = Modifier,
-) {
+    newsModel: TopNewsModel,
+    onNewsItemClick : (String) -> Unit,
+    ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(horizontal = 16.dp, vertical = 16.dp)
             .clip(RoundedCornerShape(16.dp))
+            .clickable { onNewsItemClick(newsModel.pk) }
     ) {
         NewsImage(newsModel.urlToImage)
         NewsInfo(newsModel)
@@ -154,7 +172,11 @@ fun NewsInfo(newsModel: TopNewsModel) {
             .padding(start = 12.dp)
     ) {
         Spacer(modifier = Modifier.height(8.dp))
-        NewsText(text = newsModel.title, style = LocalTypographySystem.current.body14)
+        NewsText(
+            text = newsModel.title,
+            style = LocalTypographySystem.current.body14,
+            color = if(newsModel.isSelected) LocalColorPalette.current.red else LocalColorPalette.current.white
+        )
         Spacer(modifier = Modifier.height(3.dp))
         NewsText(text = newsModel.publishedAt, style = LocalTypographySystem.current.body12, color = LocalColorPalette.current.gray30)
         Spacer(modifier = Modifier.height(8.dp))

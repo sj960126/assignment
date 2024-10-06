@@ -17,11 +17,33 @@ class NewsViewModel @Inject constructor(
 
     override fun createInitialState(): NewsContract.NewsUiState = NewsContract.NewsUiState(newsUiState = NewsContract.NewsContentUiState.Loading)
 
-    override fun handleEvent(event: NewsContract.NewsEvent) {
-    }
-
     init {
         fetchNews()
+    }
+
+    override fun handleEvent(event: NewsContract.NewsEvent) {
+        when(event){
+            is NewsContract.NewsEvent.ItemClick ->{
+                updateSelectedItem(event.pk)
+                setEffect { NewsContract.NewsSideEffect.NavigateToDetail(event.pk) }
+            }
+        }
+    }
+
+    private fun updateSelectedItem(pk: String) {
+        if (currentState.newsUiState is NewsContract.NewsContentUiState.Success) {
+            val successState = currentState.newsUiState as NewsContract.NewsContentUiState.Success
+
+            successState.news.find { it.pk == pk }?.let { selectedItem ->
+                val updatedNews = successState.news.map {
+                    if (it.pk == pk) selectedItem.copy(isSelected = true) else it
+                }.toPersistentList()
+
+                setState {
+                    copy(newsUiState = successState.copy(news = updatedNews))
+                }
+            }
+        }
     }
 
     private fun fetchNews(){

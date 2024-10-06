@@ -12,7 +12,7 @@ import kotlinx.collections.immutable.persistentListOf
 class NewsContract {
 
     sealed interface NewsEvent : UiEvent{
-
+        data class ItemClick(val pk: String) : NewsEvent
     }
 
     @Stable
@@ -39,8 +39,8 @@ class NewsContract {
         ) : NewsContentUiState
     }
 
-    sealed interface NewsSideEffect : UiSideEffect{
-
+    sealed interface NewsSideEffect : UiSideEffect {
+        data class NavigateToDetail(val pk: String) : NewsSideEffect
     }
 
 }
