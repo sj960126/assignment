@@ -2,6 +2,7 @@ import com.shs.buildsrc.AndroidConfig
 import com.shs.buildsrc.implementationAndroidXCore
 import com.shs.buildsrc.implementationCompose
 import com.shs.buildsrc.implementationKotlin
+import com.shs.buildsrc.implementationSerialization
 
 plugins {
     id("com.android.library")
@@ -47,4 +48,5 @@ dependencies {
     implementationKotlin()
     implementationAndroidXCore()
     implementationCompose()
+    implementationSerialization()
 }
