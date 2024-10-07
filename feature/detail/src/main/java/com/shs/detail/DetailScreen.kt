@@ -10,7 +10,7 @@ import com.shs.ui.webview.WebViewScreen
 
 
 @Composable
-fun DetailRoute(
+internal fun DetailRoute(
     pk : String,
     detailViewModel: DetailViewModel = hiltViewModel()
 ){
@@ -22,6 +22,6 @@ fun DetailRoute(
 }
 
 @Composable
-fun DetailScreen(url : String, context : Context){
+internal fun DetailScreen(url : String, context : Context){
     WebViewScreen(url = url, context = context)
 }

@@ -44,7 +44,8 @@ import kotlinx.collections.immutable.ImmutableList
 private const val MIN_LARGE_SCREEN_WIDTH = 600
 
 @Composable
-fun NewsRoute(
+internal fun NewsRoute(
+    onNewsClick : (String) -> Unit,
     newsViewModel: NewsViewModel = hiltViewModel()
 ) {
     val viewUiState = newsViewModel.uiState.collectAsStateWithLifecycle()
@@ -52,7 +53,9 @@ fun NewsRoute(
 
     LaunchedEffect(newsViewModel.effect){
         newsViewModel.effect.collect { effect ->
-
+            when(effect){
+                is NewsContract.NewsSideEffect.NavigateToDetail -> onNewsClick(effect.pk)
+            }
         }
     }
 

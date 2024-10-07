@@ -3,8 +3,6 @@ package com.shs.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.shs.detail.DetailRoute
-import com.shs.news.NewsRoute
 import com.shs.ui.design_system.MainTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,8 +12,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MainTheme {
-                DetailRoute(pk = "us1")
-//                NewsRoute()
+                MainScreen()
             }
         }
     }

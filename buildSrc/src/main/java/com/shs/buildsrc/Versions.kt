@@ -9,7 +9,7 @@ object Versions {
     const val COMPOSE_VERSION = "1.4.0"
     const val COMPOSE_ACTIVITY_VERSION = "1.4.0"
     const val COMPOSE_COIL_VERSION = "2.2.0"
-    const val NAVIGATION_VERSION = "2.5.3"
+    const val NAVIGATION_VERSION = "2.8.0"
     const val HILT_NAVIGATION_VERSION = "1.0.0"
     const val COMPOSE_LIFECYCLE_VERSION = "2.7.0"
     const val RETROFIT_VERSION = "2.9.0"
