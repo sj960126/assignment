@@ -62,27 +62,28 @@ internal fun NewsRoute(
     NewsScreen(
         viewUiState = viewUiState.value,
         isLargeScreen = isLargeScreen,
-        onNewsItemClick = {
+        onNewsClick = {
             newsViewModel.setEvent(event = NewsContract.NewsEvent.ItemClick(pk = it))
         }
     )
+
 }
 
 @Composable
 internal fun NewsScreen(
     viewUiState: NewsContract.NewsUiState,
     isLargeScreen: Boolean,
-    onNewsItemClick : (String) -> Unit,
-    ) {
+    onNewsClick : (String) -> Unit,
+) {
     when (viewUiState.newsUiState) {
         NewsContract.NewsContentUiState.Loading -> Unit
         NewsContract.NewsContentUiState.Empty -> Unit
         NewsContract.NewsContentUiState.Error -> Unit
         is NewsContract.NewsContentUiState.Success -> {
             if (isLargeScreen) {
-                NewsGrid(newsList = viewUiState.newsUiState.news, onNewsItemClick = onNewsItemClick)
+                NewsGrid(newsList = viewUiState.newsUiState.news, onNewsClick = onNewsClick)
             } else {
-                NewsList(newsList = viewUiState.newsUiState.news, onNewsItemClick = onNewsItemClick)
+                NewsList(newsList = viewUiState.newsUiState.news, onNewsClick = onNewsClick)
             }
         }
     }
@@ -91,7 +92,7 @@ internal fun NewsScreen(
 @Composable
 fun NewsGrid(
     newsList: ImmutableList<TopNewsModel>,
-    onNewsItemClick : (String) -> Unit,
+    onNewsClick : (String) -> Unit,
     cellCount : Int = 3,
 ) {
     LazyVerticalGrid(
@@ -101,7 +102,7 @@ fun NewsGrid(
             .fillMaxHeight()
     ) {
         items(newsList, key = { it.pk }) {
-            NewsCard(newsModel = it, onNewsItemClick = onNewsItemClick)
+            NewsCard(newsModel = it, onNewsClick = onNewsClick)
         }
     }
 }
@@ -109,15 +110,15 @@ fun NewsGrid(
 @Composable
 fun NewsList(
     newsList: ImmutableList<TopNewsModel>,
-    onNewsItemClick : (String) -> Unit,
-    ) {
+    onNewsClick : (String) -> Unit,
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
         items(newsList, key = { it.pk }) {
-            NewsCard(newsModel = it, onNewsItemClick = onNewsItemClick)
+            NewsCard(newsModel = it, onNewsClick = onNewsClick)
         }
     }
 }
@@ -126,15 +127,15 @@ fun NewsList(
 fun NewsCard(
     modifier: Modifier = Modifier,
     newsModel: TopNewsModel,
-    onNewsItemClick : (String) -> Unit,
-    ) {
+    onNewsClick : (String) -> Unit,
+) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(horizontal = 16.dp, vertical = 16.dp)
             .clip(RoundedCornerShape(16.dp))
-            .clickable { onNewsItemClick(newsModel.pk) }
+            .clickable { onNewsClick(newsModel.pk) }
     ) {
         NewsImage(newsModel.urlToImage)
         NewsInfo(newsModel)
