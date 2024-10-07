@@ -36,6 +36,7 @@ import coil.compose.rememberImagePainter
 import com.shs.domain.top_headlines.model.TopNewsModel
 import com.shs.ui.common.enableDiskAndMemoryCache
 import com.shs.ui.common.isDeviceWidthOver
+import com.shs.ui.component.LoadingIndicator
 import com.shs.ui.design_system.LocalColorPalette
 import com.shs.ui.design_system.LocalTypographySystem
 import kotlinx.collections.immutable.ImmutableList
@@ -76,7 +77,7 @@ internal fun NewsScreen(
     onNewsClick : (String) -> Unit,
 ) {
     when (viewUiState.newsUiState) {
-        NewsContract.NewsContentUiState.Loading -> Unit
+        NewsContract.NewsContentUiState.Loading -> LoadingIndicator()
         NewsContract.NewsContentUiState.Empty -> Unit
         NewsContract.NewsContentUiState.Error -> Unit
         is NewsContract.NewsContentUiState.Success -> {
@@ -204,3 +205,4 @@ fun NewsText(
         modifier = modifier
     )
 }
+
