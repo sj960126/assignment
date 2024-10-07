@@ -18,7 +18,7 @@ class NewsViewModel @Inject constructor(
     override fun createInitialState(): NewsContract.NewsUiState = NewsContract.NewsUiState(newsUiState = NewsContract.NewsContentUiState.Loading)
 
     init {
-        fetchNews()
+        fetchTopHeadlineNews()
     }
 
     override fun handleEvent(event: NewsContract.NewsEvent) {
@@ -46,7 +46,7 @@ class NewsViewModel @Inject constructor(
         }
     }
 
-    private fun fetchNews(){
+    private fun fetchTopHeadlineNews(){
         viewModelScope.launch {
             fetchTopHeadlinesUseCase(country = CountryType.US.code)
                 .catch {
