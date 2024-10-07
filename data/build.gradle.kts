@@ -4,12 +4,14 @@ import com.shs.buildsrc.implementationHilt
 import com.shs.buildsrc.implementationKotlin
 import com.shs.buildsrc.implementationRetrofitOkHttp
 import com.shs.buildsrc.implementationRoom
+import com.shs.buildsrc.implementationSerialization
 
 plugins {
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -53,4 +55,5 @@ dependencies {
     implementationHilt()
     implementationRetrofitOkHttp()
     implementationRoom()
+    implementationSerialization()
 }

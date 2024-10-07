@@ -28,11 +28,6 @@ fun DependencyHandler.implementationHilt() {
     add("kaptTest", Dependencies.Hilt.ANDROID_COMPILER)
 }
 
-fun DependencyHandler.implementationPaging() {
-    add("implementation", Dependencies.Paging.PAGING_RUNTIME)
-    add("implementation", Dependencies.Paging.PAGING_COMPOSE)
-}
-
 fun DependencyHandler.implementationRoom() {
     add("implementation", Dependencies.Room.RUNTIME)
     add("implementation", Dependencies.Room.ROOM_PAGING)
@@ -52,4 +47,8 @@ fun DependencyHandler.implementationCompose() {
     add("implementation", Dependencies.Compose.NAVIGATION)
     add("implementation", Dependencies.Compose.HILT_NAVIGATION)
     add("implementation", Dependencies.Compose.COMPOSE_LIFECYCLE)
+}
+
+fun DependencyHandler.implementationSerialization() {
+    add("implementation", Dependencies.Kotlin.KOTLINX_SERIALIZATION_JSON)
 }

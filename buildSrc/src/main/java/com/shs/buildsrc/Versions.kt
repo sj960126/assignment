@@ -7,8 +7,6 @@ object Versions {
     const val HILT_VERSION = "2.44"
     const val ROOM_VERSION = "2.5.0"
     const val COMPOSE_VERSION = "1.4.0"
-    const val PAGING_VERSION = "3.1.1"
-    const val PAGING_COMPOSE_VERSION = "1.0.0-alpha14"
     const val COMPOSE_ACTIVITY_VERSION = "1.4.0"
     const val COMPOSE_COIL_VERSION = "2.2.0"
     const val NAVIGATION_VERSION = "2.5.3"
@@ -20,4 +18,5 @@ object Versions {
     const val CONVERTER_GSON_VERSION = "2.9.0"
     const val COROUTINES_VERSION = "1.7.3"
     const val IMMUTABLE_VERSION = "0.3.7"
+    const val SERIALIZABLE_VERSION = "1.3.2"
 }

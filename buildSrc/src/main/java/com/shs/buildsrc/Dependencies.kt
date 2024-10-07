@@ -6,6 +6,7 @@ object Dependencies {
         const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
         const val KOTLIN_BOM = "org.jetbrains.kotlin:kotlin-bom:${Versions.KOTLIN_VERSION}"
         const val IMMUTABLE = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${Versions.IMMUTABLE_VERSION}"
+        const val KOTLINX_SERIALIZATION_JSON = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.SERIALIZABLE_VERSION}"
     }
 
     object AndroidX {
@@ -18,11 +19,6 @@ object Dependencies {
         const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM_VERSION}"
         const val COMPILER = "androidx.room:room-compiler:${Versions.ROOM_VERSION}"
         const val ROOM_PAGING = "androidx.room:room-paging:${Versions.ROOM_VERSION}"
-    }
-
-    object Paging {
-        const val PAGING_RUNTIME = "androidx.paging:paging-runtime:${Versions.PAGING_VERSION}"
-        const val PAGING_COMPOSE = "androidx.paging:paging-compose:${Versions.PAGING_COMPOSE_VERSION}"
     }
 
     object Hilt {

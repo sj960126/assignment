@@ -6,6 +6,7 @@ import com.shs.buildsrc.implementationKotlin
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
