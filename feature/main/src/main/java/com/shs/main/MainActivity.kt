@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import com.shs.ui.design_system.MainTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
